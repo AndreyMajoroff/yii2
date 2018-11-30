@@ -9,6 +9,6 @@ class SiteController extends Controller
 {
     public function actionIndex()
     {
-        return 'Andrey';
+       return $this->render('index');
     }
 }
