@@ -1,8 +1,14 @@
-<!doctype html>
+<?php
+
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+
+?>
 
 <?php
 $this->beginPage();
 ?>
+    <!doctype html>
 
 <html lang="en">
 
@@ -19,12 +25,6 @@ $this->beginPage();
 
 </head>
 
-<?php
-
-use yii\bootstrap\NavBar;
-
-?>
-
 <body>
 <?php
 $this->beginBody();
@@ -32,6 +32,7 @@ $this->beginBody();
     <?php
 
     NavBar::begin([
+
             'brandLabel' => 'VideoSchool',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
@@ -39,6 +40,37 @@ $this->beginBody();
             ]
 
     ]);
+
+    $menu = [
+
+        [
+            'label' => 'Join',
+            'url' => [
+                  '/site/join'
+            ]
+        ],
+
+        [
+            'label' => 'Login',
+            'url' => [
+                '/site/login'
+            ]
+        ]
+    ];
+
+    echo Nav::widget(
+        [
+            'options' =>
+                [
+                    'class' => 'navbar-nav navbar-right'
+                ],
+
+               'items' => $menu
+
+
+        ]
+    );
+
     NavBar::end();
     ?>
 
