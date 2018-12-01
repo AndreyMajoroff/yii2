@@ -2,13 +2,13 @@
 $I = new AcceptanceTester($scenario);
 $I->wantTo('Open home/join/login pages');
 $I->amOnPage('/web/');
-$I->see('Welcome', 'h1'); // Why Welcome don't work?
+$I->see('Welcome', 'h1');
 
-$I->seeLink('Join', '/web/site/join');
-$I->seeLink('Login', '/web/site/login');
+$I->seeLink('Join', '/web/user/join');
+$I->seeLink('Login', '/web/user/login');
 
-$I->amOnPage('/web/site/join');
+$I->amOnPage('/web/user/join');
 $I->see('Join', 'h1');
 
-$I->amOnPage('/web/site/login');
+$I->amOnPage('/web/user/login');
 $I->see('Login', 'h1');

@@ -46,14 +46,14 @@ $this->beginBody();
         [
             'label' => 'Join',
             'url' => [
-                  '/site/join'
+                  '/user/join'
             ]
         ],
 
         [
             'label' => 'Login',
             'url' => [
-                '/site/login'
+                '/user/login'
             ]
         ]
     ];
