@@ -24,9 +24,16 @@ class UserJoinForm extends Model
                ['name', 'string', 'min' => 3, 'max' => 30],
                ['email', 'email', 'message' => 'Email is not correct'],
                ['password', 'string', 'min' => 4],
-               ['confirmPassword', 'min' => 4, 'compare', 'compareAttribute' => 'password',
+               ['confirmPassword', 'compare', 'compareAttribute' => 'password',
                    'message' => 'Confirmation is not correct']
 
            ];
+    }
+
+    public function setUserRecord($userRecord)
+    {
+        $this->name = $userRecord->name;
+        $this->email = $userRecord->email;
+        $this->password = $this->confirmPassword = 'qwas';
     }
 }
