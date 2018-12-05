@@ -12,4 +12,21 @@ class UserJoinForm extends Model
     public $email;
     public $password;
     public $confirmPassword;
+
+    public function rules()
+    {
+       return
+           [
+               ['name', 'required'],
+               ['email', 'required'],
+               ['password', 'required'],
+               ['confirmPassword', 'required'],
+               ['name', 'string', 'min' => 3, 'max' => 30],
+               ['email', 'email', 'message' => 'Email is not correct'],
+               ['password', 'string', 'min' => 4],
+               ['confirmPassword', 'min' => 4, 'compare', 'compareAttribute' => 'password',
+                   'message' => 'Confirmation is not correct']
+
+           ];
+    }
 }
