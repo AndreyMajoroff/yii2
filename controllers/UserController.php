@@ -16,15 +16,21 @@ class UserController extends Controller
 //       $userRecord = new UserRecord();
 //       $userRecord->setTestUser();
 //       $userRecord->save();
-        $userJoinForm = new UserJoinForm();
+       $userJoinForm = new UserJoinForm();
        return $this->render('join', compact('userJoinForm')
        );
     }
 
     public function actionLogin()
     {
-        $uid = UserIdentity::findIdentity(1);
-        Yii::$app->user->login($uid);
+//        $uid = UserIdentity::findIdentity(1);
+//        Yii::$app->user->login($uid);
        return $this->render('login');
+    }
+
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+        $this->redirect('/');
     }
 }

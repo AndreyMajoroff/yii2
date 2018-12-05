@@ -40,24 +40,39 @@ $this->beginBody();
             ]
 
     ]);
-
+if (Yii::$app->user->isGuest) {
     $menu = [
 
         [
             'label' => 'Join',
             'url' => [
-                  '/user/join'
+                '/user/join'
             ]
         ],
 
-        [
-            'label' => 'Login',
-            'url' => [
-                '/user/login'
+        ['label' => 'Login',
+        'url' => [
+            '/user/login'
             ]
         ]
     ];
+} else {
+    $menu = [
 
+        [
+            'label' => Yii::$app->user->getIdentity()->name,
+//            'url' => [
+//                'todo: link  to user profile'
+//            ]
+        ],
+
+        ['label' => 'Logout',
+            'url' => [
+                '/user/logout'
+            ]
+        ]
+    ];
+}
     echo Nav::widget(
         [
             'options' =>
