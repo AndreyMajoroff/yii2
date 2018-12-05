@@ -25,7 +25,8 @@ class UserJoinForm extends Model
                ['email', 'email', 'message' => 'Email is not correct'],
                ['password', 'string', 'min' => 4],
                ['confirmPassword', 'compare', 'compareAttribute' => 'password',
-                   'message' => 'Confirmation is not correct']
+                   'message' => 'Confirmation is not correct'],
+               ['email', 'errorIfEmailUsed'],
 
            ];
     }
@@ -36,4 +37,13 @@ class UserJoinForm extends Model
         $this->email = $userRecord->email;
         $this->password = $this->confirmPassword = 'qwas';
     }
+
+    public function errorIfEmailUsed()
+    {
+        if(UserRecord::existEmail($this->email)) {
+            $this->addError('email', 'This email already exists');
+        }
+        return;
+    }
+
 }
