@@ -27,9 +27,12 @@ class UserController extends Controller
     {
         $userJoinForm = new UserJoinForm();
        if ($userJoinForm->load(Yii::$app->request->post()))
-        if ($userJoinForm->validate())
-            $userJoinForm->name .= 'ok';
-
+        if ($userJoinForm->validate()) {
+            $userRecord = new UserRecord();
+            $userRecord->setUserJoinForm($userJoinForm);
+            $userRecord->save();
+            return $this->redirect('/web/user/login');
+        }
             return $this->render('join',
                 //['userJoinForm' => $userJoinForm],
                 compact('userJoinForm')
@@ -49,4 +52,5 @@ class UserController extends Controller
         Yii::$app->user->logout();
         $this->redirect('/');
     }
+
 }

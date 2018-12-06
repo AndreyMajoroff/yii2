@@ -26,4 +26,13 @@ class UserRecord extends ActiveRecord
     {
         return (static::find()->where(['email' => $email])->count());
     }
+
+    public function setUserJoinForm($userJoinForm)
+    {
+        $this->name = $userJoinForm->name;
+        $this->email = $userJoinForm->email;
+        $this->passhash = $userJoinForm->password;
+        $this->status = 1;
+
+    }
 }
