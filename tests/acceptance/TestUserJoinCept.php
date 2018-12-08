@@ -8,8 +8,8 @@ $I->wantTo('New user join & login');
 $user1 = $I->imagineUser();
 $user2 = $I->imagineUser();
 
-//$I->loginUser($user1);
-//$I->see('This email does not registered');
+    $I->loginUser($user1);
+    $I->see('This email does not registered');
 
 $I->joinUser($user1);
 $I->joinUser($user2);
