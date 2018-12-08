@@ -13,6 +13,7 @@ use yii\helpers\Html;
 
         <?= $form->field($userLoginForm, 'email') ?>
         <?= $form->field($userLoginForm, 'password')->passwordInput() ?>
+        <?= $form->field($userLoginForm, 'remember')->checkbox()?>
         <?= Html::submitButton('Enter',
             ['class' => 'btn btn-primary']) ?>
 
